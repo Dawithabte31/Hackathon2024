@@ -16,7 +16,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<SharedLayout />}>
-              <Route index element={<BuyerHomePage />} />
+              <Route index element={<LandingPage />} />
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
               {/* <Route path="*" element={<ErrorPage />} /> */}
