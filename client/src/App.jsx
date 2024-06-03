@@ -2,14 +2,12 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
-
 import LoginPage from "./pages/LoginPage";
 
 import RegisterPage from "./pages/RegisterPage";
 import LandingPage from "./components/HomePage/LandingPage";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import BuyerHomePage from "./pages/BuyerHomePage";
-
 
 const App = () => {
   return (
@@ -23,11 +21,7 @@ const App = () => {
         </Route>
       </Routes>
     </BrowserRouter>
-
   );
 };
-
-}
-
 
 export default App;
