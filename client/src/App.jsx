@@ -11,6 +11,7 @@ import BuyerHomePage from "./pages/BuyerHomePage";
 
 import { CheckOut } from "./pages/CheckOut";
 import SellerPage from "./pages/SellerPage";
+import AdminDashboardPage from "./pages/AdminDashboardPage";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
             </Route>
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
+            <Route path="admin" element={<AdminDashboardPage />} />
           </Routes>
         </BrowserRouter>
       </CartContextProvider>

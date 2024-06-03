@@ -20,33 +20,35 @@ function Seller_page() {
 
   return (
     <div>
-      <h1 className="my-8 text-center text-[30px] font-semibold">
-        Hello User, Welcome to your Dashboard
-      </h1>
-      <div className="flex h-[80vh] justify-center">
-        <div className="flex h-full w-1/6 justify-center border-r-2">
-          <ul className="">
+      <div className="flex h-screen -translate-x-4 justify-center border-t-2 border-gray-600">
+        <div className="h-[90vh] w-[300px] bg-[#2c3e50] p-5 text-[#ecf0f1]">
+          <div className="flex">
+            <h2 className="my-4 flex h-auto w-auto justify-center font-extrabold">
+              <span className="text-2xl">Seller Dashboard</span>
+            </h2>
+          </div>
+          <ul className="list-none divide-y border-b p-0">
             <li
               onClick={() => setSelectedMenuItem("addItems")}
-              className={`mb-6 h-8 w-[210px] cursor-pointer border-b-2`}
+              className={`cursor-pointer px-2.5 py-5 opacity-100 transition-all duration-300 hover:bg-white hover:text-black`}
             >
               Add items
             </li>
             <li
               onClick={() => setSelectedMenuItem("transactions")}
-              className="mb-6 h-8 w-[210px] cursor-pointer border-b-2"
+              className="cursor-pointer px-2.5 py-5 opacity-100 transition-all duration-300 hover:bg-white hover:text-black"
             >
               Transactions
             </li>
             <li
               onClick={() => setSelectedMenuItem("itemsLeft")}
-              className="mb-6 h-8 w-[210px] cursor-pointer border-b-2"
+              className="cursor-pointer px-2.5 py-5 opacity-100 transition-all duration-300 hover:bg-white hover:text-black"
             >
-              items left
+              Items left
             </li>
           </ul>
         </div>
-        <div className="my-auto h-[80vh] w-5/6">{renderContent()}</div>
+        <div className="mt-8 h-[80vh] w-5/6">{renderContent()}</div>
       </div>
     </div>
   );
