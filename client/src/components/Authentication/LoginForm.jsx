@@ -1,12 +1,12 @@
-import React from "react";
-
+import React, { useState } from "react";
 const LoginForm = () => {
+  const [userType, setUserType] = useState("Admin");
   return (
     <div className="flex h-screen w-screen items-center justify-center">
       <form className="mx-auto max-w-sm">
         <div className="mb-5">
           <label
-            for="email"
+            htmlFor="email"
             className="mb-2 block text-sm font-medium text-gray-900"
           >
             Username
@@ -15,13 +15,12 @@ const LoginForm = () => {
             type="email"
             id="email"
             className="block w-[380px] rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-            placeholder="name"
             required
           />
         </div>
         <div className="mb-5">
           <label
-            for="password"
+            htmlFor="password"
             className="mb-2 block text-sm font-medium text-gray-900"
           >
             Your password
@@ -34,7 +33,7 @@ const LoginForm = () => {
           />
         </div>
         <div className="mb-5 flex items-center gap-x-4 text-black">
-          <label for="countries" className="block">
+          <label htmlFor="countries" className="block">
             User Type :
           </label>
 
@@ -42,6 +41,9 @@ const LoginForm = () => {
             name="auth"
             id="auth"
             className="rounded-sm bg-black p-1 text-white outline-none"
+            onChange={(e) => {
+              setUserType(e.target.value);
+            }}
           >
             <option value="login">Admin</option>
             <option value="seller">Seller </option>

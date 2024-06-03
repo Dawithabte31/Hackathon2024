@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-
+import { ProductContextProvider } from "./contexts/ProductContext";
+import { CartContextProvider } from "./contexts/CartContext";
 import LoginPage from "./pages/LoginPage";
-
 import RegisterPage from "./pages/RegisterPage";
 import LandingPage from "./components/HomePage/LandingPage";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
@@ -12,7 +12,10 @@ import SellerPage from "./pages/SellerPage";
 
 const App = () => {
   return (
-    <BrowserRouter>
+ 
+    <ProductContextProvider>
+      <CartContextProvider>
+     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<LandingPage />} />
@@ -23,6 +26,9 @@ const App = () => {
         </Route>
       </Routes>
     </BrowserRouter>
+      </CartContextProvider>
+    </ProductContextProvider>
+ 
   );
 };
 
