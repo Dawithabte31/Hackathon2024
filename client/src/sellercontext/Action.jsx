@@ -2,9 +2,9 @@ export const LoginStart = () => ({
   type: "LOGIN_START",
 });
 
-export const LoginSuccess = (user) => ({
+export const LoginSuccess = (seller) => ({
   type: "LOGIN_SUCCESS",
-  payload: user,
+  payload: seller,
 });
 
 export const LoginFailure = () => ({
@@ -19,9 +19,9 @@ export const UpdateStart = () => ({
   type: "UPDATE_START",
 });
 
-export const UpdateSuccess = (user) => ({
+export const UpdateSuccess = (seller) => ({
   type: "UPDATE_SUCCESS",
-  payload: user,
+  payload: seller,
 });
 
 export const UpdateFailure = () => ({

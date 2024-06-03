@@ -3,26 +3,26 @@
     switch (action.type) {
       case "LOGIN_START":
         return {
-          user: null,
+          seller: null,
           isFetching: true,
           error: false,
         };
   
       case "LOGIN_SUCCESS":
         return {
-          user: action.payload,
+          seller: action.payload,
           isFetching: false,
           error: false,
         };
       case "LOGIN_FAILURE":
         return {
-          user: null,
+          seller: null,
           isFetching: false,
           error: false,
         };
         case "LogOut":
           return {
-            user: null,
+            seller: null,
             isFetching: false,
             error: false,
           };
@@ -34,13 +34,13 @@
       
           case "UPDATE_SUCCESS":
             return {
-              user: action.payload,
+              seller: action.payload,
               isFetching: false,
               error: false,
             };
           case "UPDATE_FAILURE":
             return {
-              user: state.user,
+              seller: state.seller,
               isFetching: false,
               error: true,
             };

@@ -2,31 +2,31 @@ import { createContext, useEffect, useReducer } from "react";
 import Reducer from "./Reducer";
 
 const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem("user")) || null,
+  seller: null,
   isFetching: false,
   error: false,
 };
 
 
-export const Context = createContext(INITIAL_STATE);
-export const ContextProvider = ({ children }) => {
+export const Contextseller = createContext(INITIAL_STATE);
+export const ContextsellerProvider = ({ children }) => {
   
   const [state, dispatch] = useReducer(Reducer, INITIAL_STATE);
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(state.user));
-  }, [state.user]);
+    localStorage.setItem("seller", JSON.stringify(state.seller));
+  }, [state.seller]);
 
   return (
-    <Context.Provider
+    <Contextseller.Provider
       value={{
-        user: state.user,
+        seller: state.seller,
         isFetching: state.isFetching,
         error: state.error,
         dispatch,
       }}
     >
       {children}
-    </Context.Provider>
+    </Contextseller.Provider>
   );
 };

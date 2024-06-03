@@ -1,28 +1,60 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { sellercontext } from "../context/sellercontext";
+import { useContext} from "react";
+import { Contextseller } from "./../../sellercontext/Contextseller";
+import axios from "axios";
+
+
+
+
+
+
+
+
+
+
+
+
 
 const LoginForm = () => {
+  const { dispatch } = useContext(Contextseller);
   const [userType, setUserType] = useState("admin");
-  console.log(userType);
   const navigate = useNavigate();
-  const sellerApi = "http://localhost:3000/api/loginseller";
-  const userApi = "http://localhost:3000/api/login";
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const passwordRef = useRef(null);
+  const emailrRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // dispatch({ type: "LOGIN_START" });
+    dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("http://localhost:3000/api/loginseller", {
+      if(userType==="seller"){
+        console.log("erooo")
+      const res = await axios.post(`http://localhost:3000/api/loginseller`, {
         email,
         password,
       });
-      // dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      console.log("done")
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       res.data && window.location.replace(`/${userType}`);
-      setEmail("");
-      setPassword("");
+      setEmail('');
+      setPassword('');
+       }
+       else{
+        const res = await axios.post(`http://localhost:3000/api/login`, {
+          email,
+          password,
+        });
+        console.log("done")
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        res.data && window.location.replace(`/${userType}`);
+        setEmail('');
+        setPassword('');
+       }
+      
     } catch (error) {
-      // setError(true);
+      console.log(error);
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };
@@ -45,10 +77,14 @@ const LoginForm = () => {
             Email
           </label>
           <input
+                      ref={emailrRef}
+
             type="email"
             id="email"
             className="block w-[380px] rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-5">
@@ -63,6 +99,10 @@ const LoginForm = () => {
             id="password"
             className="block w-[380px] rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             required
+            ref={passwordRef}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+
           />
         </div>
         <div className="mb-5 flex items-center gap-x-4 text-black">
