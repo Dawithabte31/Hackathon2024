@@ -1,9 +1,18 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 const LoginForm = () => {
-  const [userType, setUserType] = useState("Admin");
+  const [userType, setUserType] = useState("admin");
+  console.log(userType);
+  const navigate = useNavigate();
+
   return (
     <div className="flex h-screen w-screen items-center justify-center">
-      <form className="mx-auto max-w-sm">
+      <form
+        className="mx-auto max-w-sm"
+        onSubmit={() => {
+          navigate(`/${userType}`);
+        }}
+      >
         <div className="mb-5">
           <label
             htmlFor="email"
@@ -40,7 +49,7 @@ const LoginForm = () => {
           <select
             name="auth"
             id="auth"
-            className="rounded-sm bg-black p-1 text-white outline-none"
+            className="rounded-sm bg-slate-300 p-1 outline-none"
             onChange={(e) => {
               setUserType(e.target.value);
             }}
@@ -50,6 +59,7 @@ const LoginForm = () => {
             <option value="buyer">Buyer </option>
           </select>
         </div>
+
         <button
           type="submit"
           className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

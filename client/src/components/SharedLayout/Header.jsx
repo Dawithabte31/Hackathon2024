@@ -61,7 +61,7 @@ const Header = ({ setIsNavbar, setIsSearch, setIsCart }) => {
             onClick={() => {
               setIsCart(true);
             }}
-            className={`relative flex cursor-pointer gap-x-4 border border-gray-500 bg-[#2178ac] p-1 first:rounded-md`}
+            className={`relative flex cursor-pointer gap-x-4 border border-gray-500 bg-[#2178ac] p-1 text-white first:rounded-md`}
           >
             <h1 className="">Cart</h1>
             <FiShoppingBag
