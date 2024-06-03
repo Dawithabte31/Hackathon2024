@@ -1,12 +1,14 @@
 import React from "react";
-import RegisterForm from "../components/Authentication/RegisterForm";
 
-function RegisterPage() {
+import BuyerRegistrationForm from "../components/Authentication/BuyerRegistrationForm";
+
+const RegisterPage = () => {
   return (
     <div>
-      <RegisterForm />
+      <BuyerRegistrationForm />
     </div>
   );
-}
+};
+ 
 
 export default RegisterPage;
