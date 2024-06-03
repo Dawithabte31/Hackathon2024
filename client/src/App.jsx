@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import LandingPage from "./components/HomePage/LandingPage";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import BuyerHomePage from "./pages/BuyerHomePage";
+import { CheckOut } from "./pages/CheckOut";
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
               <Route index element={<LandingPage />} />
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
+              <Route path="buyer" element={<BuyerHomePage />} />
+              <Route path="checkout" element={<CheckOut />} />
               {/* <Route path="*" element={<ErrorPage />} /> */}
             </Route>
           </Routes>
