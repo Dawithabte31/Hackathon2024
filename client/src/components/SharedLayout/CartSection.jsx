@@ -1,5 +1,6 @@
-import { CartContext } from "../../contexts/CartContext";
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../contexts/CartContext";
 import { IoCloseSharp, IoCartOutline } from "react-icons/io5";
 import { IoIosCloseCircleOutline, IoMdAdd, IoMdRemove } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -26,12 +27,12 @@ const CartSection = ({ isCart, setIsCart }) => {
     cartItemsList &&
     cartItemsList.map((item, index) => (
       <div className="grid grid-cols-3" key={index}>
-        <div className="h-[99px] w-[78px] bg-white">
+        <div className="h-[80px] w-[78px] bg-white">
           <img src={item.imgSrc} className="h-[100%] w-[100%]" />
         </div>
         <div className="col-span-2">
           <div className="flex items-center justify-between">
-            <h1 className="text-[18px] font-bold">{item.itemNameEnglish}</h1>
+            <h1 className="text-sm font-bold">{item.itemNameEnglish}</h1>
             <IoIosCloseCircleOutline
               className="shrink-0 cursor-pointer hover:scale-110"
               size={25}
@@ -42,7 +43,7 @@ const CartSection = ({ isCart, setIsCart }) => {
           </div>
           <p className="translate-y-[-4px] text-gray-500">{item.category[0]}</p>
           <div className="mt-3 flex justify-between">
-            <p className="font-semibold">${item.price} </p>
+            <p className="font-semibold">{item.price} birr </p>
             <div className="flex items-center gap-x-2 border border-gray-400">
               <button
                 className="p-2"
@@ -78,7 +79,7 @@ const CartSection = ({ isCart, setIsCart }) => {
             setIsCart(false);
           }}
         >
-          <h1 className="py-6 text-[23px] font-semibold">Shopping Cart</h1>
+          <h1 className="py-2 text-[23px] font-semibold">Shopping Cart</h1>
           <IoCloseSharp size={25} className="cursor-pointer hover:scale-110" />
         </div>
         <div
@@ -122,24 +123,26 @@ const CartSection = ({ isCart, setIsCart }) => {
         )}
       </div>
       <div
-        className={`absolute bottom-0 h-[32vh] w-[100%] space-y-4 overscroll-contain border-t border-t-gray-400 bg-[#f5f5f5] px-6 py-8 ${mappedCartList.length < 1 ? "hidden" : ""}`}
+        className={`absolute bottom-0 w-[100%] space-y-2 overscroll-contain border-t border-t-gray-400 bg-[#f5f5f5] px-6 py-4 ${mappedCartList.length < 1 ? "hidden" : ""}`}
       >
-        <div className={`flex justify-between text-[1.4rem] font-semibold`}>
-          <h1 className="">Shipping </h1>
-          <h1 className=""> ${shippingCost.toFixed(2)}</h1>
+        <div className={`flex justify-between text-[1.2rem] font-semibold`}>
+          <h1 className="text-sm">Shipping </h1>
+          <h1 className=""> {shippingCost.toFixed(2)}</h1>
         </div>
-        <div className={`flex justify-between text-[1.4rem] font-semibold`}>
-          <h1 className="">Subtotal </h1>
-          <h1 className=""> ${subtotal.toFixed(2)}</h1>
+        <div className={`flex justify-between text-[1.2rem] font-semibold`}>
+          <h1 className="text-sm">Subtotal </h1>
+          <h1 className=""> {subtotal.toFixed(2)}</h1>
         </div>
-        <div className="grid space-y-4">
-          <button className="w-[95%] rounded-md bg-[#6e6e6e] py-3 text-[1.2rem] font-semibold text-white">
+        <Link
+          to="/checkout"
+          onClick={() => {
+            setIsCart(false);
+          }}
+        >
+          <button className="w-[95%] rounded-md bg-[#6e6e6e] py-1 text-[1.2rem] font-semibold text-white">
             Checkout
           </button>
-          <button className="w-[95%] rounded-md border-2 border-black bg-white py-3 text-[1.2rem] font-semibold">
-            View Cart
-          </button>
-        </div>
+        </Link>
       </div>
     </div>
   );
