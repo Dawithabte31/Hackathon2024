@@ -59,7 +59,6 @@ const LoginForm = () => {
     }
   };
 
-
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center">
       <h1 className="mb-16 text-3xl font-bold text-blue-500">Login</h1>
@@ -69,7 +68,6 @@ const LoginForm = () => {
         //   navigate(`/${userType}`);
         // }}
         onSubmit={handleSubmit}
-      
       >
         <div className="mb-5">
           <label
