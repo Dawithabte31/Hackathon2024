@@ -1,60 +1,62 @@
 // authController.js
-const User = require("../models/User");
+const Admin = require("../models/Admin");
 const bcrypt = require("bcryptjs");
 const ErrorResponse = require("../utils/errorResponse");
 
 //register
 exports.register = async (req, res) => {
   try {
-    const emailvalidate = await User.findOne({ email: req.body.email });
+    const emailvalidate = await Admin.findOne({ email: req.body.email });
     if (emailvalidate) {
       return new ErrorResponse(`Email already in use`, 400).sendError(res);
     } else {
       const salt = await bcrypt.genSalt(10);
       const hashedPass = await bcrypt.hash(req.body.password, salt);
-     
-        const newUser = new User({
-          fullname: req.body.fullname,
+      const hashedconfPass = await bcrypt.hash(req.body.confPassword, salt);
+      if (!(req.body.password === req.body.confPassword)) {
+        return res
+          .status(400)
+          .json({ message: "The password does not match!" });
+      } else {
+        const newAdmin = new Admin({
+          username: req.body.username,
           email: req.body.email,
           password: hashedPass,
-          phone: req.body.phone,
-          address: req.body.address,
-          username: req.body.username
+          confPassword: hashedconfPass,
         });
-        const user = await newUser.save();
-        res.status(200).json(user);
-      
+        const admin = await newAdmin.save();
+        res.status(200).json(admin);
+      }
     }
   } catch (err) {
     res.status(500).json(err);
-    console.log("error");
   }
 };
 //login
 exports.login = async (req, res, next) => {
   try {
-    const user = await User.findOne({ email: req.body.email });
-    if (!user) {
+    const admin = await Admin.findOne({ email: req.body.email });
+    if (!admin) {
       return next(new ErrorResponse("Wrong credentials!", 400));
     }
 
-    const validated = await bcrypt.compare(req.body.password, user.password);
+    const validated = await bcrypt.compare(req.body.password, admin.password);
     if (!validated) {
       return next(new ErrorResponse("Invalid credentials", 400));
     }
 
-    sendTokenResponse(user, 200, res);
+    sendTokenResponse(admin, 200, res);
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, message: "Server Error" });
   }
 };
-const sendTokenResponse = async (user, codeStatus, res) => {
-  const token = await user.getJwtToken();
+const sendTokenResponse = async (admin, codeStatus, res) => {
+  const token = await admin.getJwtToken();
   res
     .status(codeStatus)
     .cookie("token", token, { maxAge: 60 * 60 * 1000, httpOnly: true })
-    .json({ success: true, token, user });
+    .json({ success: true, token, admin });
 };
 
 // logout
