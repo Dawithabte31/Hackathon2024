@@ -11,10 +11,6 @@ const ProductSchema = new Schema(
         type: Number,
         required: true,
       },
-      photo: {
-        type: String,
-        required: true,
-      },
       product_price:{
         type: Number,
         required: true,
@@ -23,15 +19,27 @@ const ProductSchema = new Schema(
       product_desc:{
         type:String,
         required: true,
-      }
-      ,
-     product_tax_type:{
-
+      },
+     turnover_tax:{
+      type:Number,
+     },
+     sur:{
+      type:Number,
+     },
+     customs_tax:{
+      type:Number,
+     },
+     exicise:{
+      type:Number,
+     },
+     vat:{
+      type:Number,
      },
      seller_id:{
       type:String,
       required: true,
-     }
+     },
+
   },
   { timestamps: true }
 );

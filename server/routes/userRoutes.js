@@ -4,7 +4,6 @@ const {allUsers,singleUser, editUser,deleteUser} = require('../controllers/userC
 const { isAuthenticated,isAdmin } = require('../middleware/auth');
 //auth routes
 
-
 //api/allusers
 router.get('/allusers',isAuthenticated,isAdmin,allUsers);
 router.get('/user/:id',isAuthenticated,singleUser);
