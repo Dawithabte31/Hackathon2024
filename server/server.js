@@ -58,7 +58,7 @@ app.use("/api", userRoute);
 app.use("/api", authRoutes);
 app.use("/api", sellerRoutes);
 app.use("/api/products", productRoutes);
-app.use("/api/producttax",producttaxRoutes);
+app.use("/api/producttax", producttaxRoutes);
 // app.use("/api/projects", projectRoute);
 // app.use("/api/services", serviceRoute);
 // app.use("/api/members", membersRoute);
@@ -70,8 +70,8 @@ app.use("/api/producttax",producttaxRoutes);
 // username:dawithabitamu31
 // password:Bq5vVyRiYk8X2SfU
 
-const port = process.env.PORT || 3000;
-app.listen(port,() => {
+const port = process.env.PORT || 5173;
+app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 app.get("/", (req, res) => {
