@@ -6,7 +6,8 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center">
+    <div className="flex h-screen w-screen flex-col items-center justify-center">
+      <h1 className="mb-16 text-3xl font-bold text-blue-500">Login</h1>
       <form
         className="mx-auto max-w-sm"
         onSubmit={() => {
@@ -18,7 +19,7 @@ const LoginForm = () => {
             htmlFor="email"
             className="mb-2 block text-sm font-medium text-gray-900"
           >
-            Username
+            Email
           </label>
           <input
             type="email"
