@@ -9,6 +9,9 @@ import LandingPage from "./components/HomePage/LandingPage";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import BuyerHomePage from "./pages/BuyerHomePage";
 
+import { CheckOut } from "./pages/CheckOut";
+import SellerPage from "./pages/SellerPage";
+
 const App = () => {
   return (
     <ProductContextProvider>
@@ -17,10 +20,13 @@ const App = () => {
           <Routes>
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<LandingPage />} />
-              <Route path="login" element={<LoginPage />} />
-              <Route path="register" element={<RegisterPage />} />
+              <Route path="buyer" element={<BuyerHomePage />} />
+              <Route path="seller" element={<SellerPage />} />
+              <Route path="checkout" element={<CheckOut />} />
               {/* <Route path="*" element={<ErrorPage />} /> */}
             </Route>
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
           </Routes>
         </BrowserRouter>
       </CartContextProvider>

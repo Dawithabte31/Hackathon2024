@@ -45,15 +45,13 @@ const Header = ({ setIsNavbar, setIsSearch, setIsCart }) => {
           />
         </div>
 
-        <h1 className="font-semibold uppercase">minister of revenue </h1>
+        <h1 className="font-extrabold uppercase text-yellow-400">
+          minister of revenue{" "}
+        </h1>
 
         <ul className="] relative ml-8 hidden gap-x-4 text-lg before:absolute before:left-[-20px] before:top-1 before:h-[20px] before:w-[1px] before:bg-gray-500 md:flex">
           <li className="duration-900 relative font-bold text-gray-700 after:block after:h-[2px] after:w-[0%] after:bg-black after:transition-all after:ease-in-out hover:after:w-[90%] min-[1440px]:text-[1.4rem]">
             <Link to="/">Home</Link>
-          </li>
-
-          <li className="duration-900 relative font-bold text-gray-700 after:block after:h-[2px] after:w-[0%] after:bg-black after:transition-all after:ease-in-out hover:after:w-[90%] min-[1440px]:text-[1.4rem]">
-            <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
         <div className="flex items-center gap-x-3 md:ml-auto">
@@ -61,7 +59,7 @@ const Header = ({ setIsNavbar, setIsSearch, setIsCart }) => {
             onClick={() => {
               setIsCart(true);
             }}
-            className={`relative flex cursor-pointer gap-x-4 border border-gray-500 bg-[#2178ac] p-1 first:rounded-md`}
+            className={`relative flex cursor-pointer gap-x-4 border border-gray-500 bg-[#2178ac] p-1 text-white first:rounded-md`}
           >
             <h1 className="">Cart</h1>
             <FiShoppingBag
