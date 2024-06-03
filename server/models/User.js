@@ -4,24 +4,34 @@ const jwt = require("jsonwebtoken");
 
 const UserSchema = new mongoose.Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    email: {
+    fullname:{
       type: String,
       required: true,
     },
-    password: {
+    
+    email:{
       type: String,
       required: true,
     },
-    confPassword: {
+    phone:{
+      type: Number,
+      required: true,
+    },
+    address:{
       type: String,
       required: true,
     },
-    role: {
+    username:{
+      type: String,
+      required: true,
+    },
+    password:{
+      type: String,
+      required: true,      
+    },
+    //at this time the buyers role will be 0 but for the admin it will will be 1 on database 
+    //so this model will be used for the buyers and the admins registration 
+    user_role:{
       type: Number,
       default: 0,
     },

@@ -4,19 +4,13 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/authRoutes");
-const eventRoute = require("./routes/events");
 const userRoute = require("./routes/userRoutes");
-const projectRoute = require("./routes/projects");
-const serviceRoute = require("./routes/services");
-const messageRoute = require("./routes/messages");
-const registerRoute = require("./routes/registers"); // Corrected import path
-const auth = require("./middleware/auth");
+// const auth = require("./middleware/auth");
 const path = require("path");
 const multer = require("multer");
 const cors = require("cors");
-const membersRoute = require("./routes/members");
+// const membersRoute = require("./routes/members");
 require("dotenv").config();
-
 // Middleware
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -29,7 +23,7 @@ app.use("/images", express.static(path.resolve(__dirname, "src/images")));
 
 // Routes
 mongoose
-  // .connect("mongodb://127.0.0.1:27017/Techinoclub")
+  //connect("mongodb://127.0.0.1:27017/Hackathon2024")
   .connect(process.env.MONGO_DB)
   .then(() => {
     console.log("Database connected");
@@ -57,14 +51,18 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 // API routes
 app.use("/api", userRoute);
 app.use("/api", authRoutes);
-app.use("/api/events", eventRoute);
-app.use("/api/projects", projectRoute);
-app.use("/api/services", serviceRoute);
-app.use("/api/members", membersRoute);
-app.use("/api/registers", registerRoute);
-app.use("/api/messages", messageRoute);
-
+// app.use("/api/events", eventRoute);
+// app.use("/api/projects", projectRoute);
+// app.use("/api/services", serviceRoute);
+// app.use("/api/members", membersRoute);
+// app.use("/api/registers", registerRoute);
+// app.use("/api/messages", messageRoute);
+// app.use("/api/api", adminAuthRoutes);
+// app.use("/app/api",adminrout);
 // Start server
+// username:dawithabitamu31
+// password:Bq5vVyRiYk8X2SfU
+
 const port = process.env.PORT || 3000;
 app.listen(port,() => {
   console.log(`Server running on port ${port}`);
