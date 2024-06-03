@@ -2,8 +2,11 @@ import React from "react";
 
 const BuyerRegistrationForm = () => {
   return (
-    <div className="mt-8">
-      <form className="mx-auto max-w-md">
+    <div className="mx-auto mt-8 max-w-lg">
+      <h2 className="text- mb-5 text-3xl font-semibold">
+        Buyers Registration Form{" "}
+      </h2>
+      <form className="mx-auto max-w-lg">
         <div className="grid md:gap-6">
           <div className="group relative z-0 mb-5 w-full">
             <input
