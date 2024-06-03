@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
- 
+
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import LandingPage from "./components/HomePage/LandingPage";
@@ -19,7 +19,7 @@ const App = () => {
         </Route>
       </Routes>
     </BrowserRouter>
- 
- 
+  );
+};
 
 export default App;
