@@ -3,10 +3,26 @@ import ProductsData from "../data/ProductData";
 export const ProductContext = createContext();
 
 export const ProductContextProvider = ({ children }) => {
-  const [productData, setProductData] = useState(ProductsData);
+  const [productData, setProductData] = useState("");
   const categories = [...new Set(productData.map((val) => val.category[0]))];
   const [currentCategory, setCurrentCategory] = useState("ALL");
 
+  const getProjects = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3000/api/products/allproducts`
+      );
+      setProductData(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getProjects();
+  }, []);
+  
+ console.log(productData);
   return (
     <ProductContext.Provider
       value={{ productData, categories, currentCategory, setCurrentCategory }}
