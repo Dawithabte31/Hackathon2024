@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
+import LoginPage from "./pages/LoginPage";
 
 const App = () => {
   return (
     <div>
-      <h1 class="text-3xl font-semibold  text-red-400 underline">Hello !</h1>
+      <LoginPage />
     </div>
   );
 };
