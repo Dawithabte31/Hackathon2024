@@ -5,6 +5,11 @@ const app = express();
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/authRoutes");
 const userRoute = require("./routes/userRoutes");
+const productRoutes = require("./routes/products");
+const producttaxRoutes = require("./routes/producttax");
+
+const sellerRoutes = require("./routes/sellerRoutes");
+
 // const auth = require("./middleware/auth");
 const path = require("path");
 const multer = require("multer");
@@ -51,7 +56,9 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 // API routes
 app.use("/api", userRoute);
 app.use("/api", authRoutes);
-// app.use("/api/events", eventRoute);
+app.use("/api", sellerRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/producttax",producttaxRoutes);
 // app.use("/api/projects", projectRoute);
 // app.use("/api/services", serviceRoute);
 // app.use("/api/members", membersRoute);

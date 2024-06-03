@@ -33,7 +33,7 @@ exports.register = async (req, res) => {
 //login
 exports.login = async (req, res, next) => {
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({email: req.body.email});
     if (!user) {
       return next(new ErrorResponse("Wrong credentials!", 400));
     }
@@ -42,7 +42,6 @@ exports.login = async (req, res, next) => {
     if (!validated) {
       return next(new ErrorResponse("Invalid credentials", 400));
     }
-
     sendTokenResponse(user, 200, res);
   } catch (err) {
     console.error(err);
