@@ -1,4 +1,5 @@
 import React from "react";
+
 import BuyerRegistrationForm from "../components/Authentication/BuyerRegistrationForm";
 
 const RegisterPage = () => {
@@ -8,5 +9,6 @@ const RegisterPage = () => {
     </div>
   );
 };
+ 
 
 export default RegisterPage;
