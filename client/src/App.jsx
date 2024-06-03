@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
- 
-// import LoginPage from "./pages/LoginPage";
+
+
+import LoginPage from "./pages/LoginPage";
+
 import RegisterPage from "./pages/RegisterPage";
 import LandingPage from "./components/HomePage/LandingPage";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
-import LoginPage from "./pages/loginPage";
+
 
 const App = () => {
   return (
@@ -20,7 +22,11 @@ const App = () => {
         </Route>
       </Routes>
     </BrowserRouter>
+
+  );
+};
+
 }
- 
+
 
 export default App;

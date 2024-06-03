@@ -1,8 +1,8 @@
 import React from "react";
 
-function RegisterForm() {
+function SellerRegisterForm() {
   return (
-    // Regsitration form for Seller
+    // Registration form for Seller
     <div className="mt-12">
       <form className="mx-auto flex w-[500px] flex-col gap-y-4">
         <div className="group relative z-0 mb-5 w-full">
@@ -184,4 +184,4 @@ function RegisterForm() {
   );
 }
 
-export default RegisterForm;
+export default SellerRegisterForm;
