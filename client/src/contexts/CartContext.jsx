@@ -7,10 +7,6 @@ export const CartContextProvider = ({ children }) => {
   const [cartItemsList, setCartItemsList] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
 
-  // productTax.find((item)=> item.product_type===product.product_type).map((item)(
-  //   {...product,tax1:item.tax1,tax2:item.tax2}
-  // ))
-
   const addToCart = (product) => {
     const ExistingItemIndex = cartItemsList.findIndex(
       (item) => item.id === product._id,
