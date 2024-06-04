@@ -8,30 +8,7 @@ import { CartContext } from "./../contexts/CartContext";
 
 import { NavLink } from "react-router-dom";
 const ProductCard = ({ product, onLoad }) => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const { addToCart } = useContext(CartContext);
-
-  const [cartIsWished, setCartIsWished] = useState(false);
-
-  const handleOnLoad = () => {
-    setIsLoad((prev) => prev + 1);
-    console.log(product.imgSrc);
-    console.log(isLoad);
-  };
-
-  useEffect(() => {
-    const image = new Image();
-    image.src = product.imgSrc;
-    image.onload = () => {
-      setIsImageLoaded(true);
-      onLoad();
-    };
-
-    return () => {
-      image.onload = null;
-    };
-  }, [product.imgSrc]);
-
   return (
     <div className="group mx-auto grid w-[90%] cursor-pointer overflow-hidden border border-slate-200">
       <div className="bg-re-300 relative flex h-[60vw] max-h-[400px] items-center shadow-sm after:absolute after:top-0 after:h-[0%] after:w-[100%] after:bg-gray-950 after:opacity-75 after:transition-all after:duration-500 after:ease-in-out group-hover:after:h-[100%] md:h-[40vw]">
@@ -52,7 +29,7 @@ const ProductCard = ({ product, onLoad }) => {
             <p>Cart</p>
           </button>
 
-          <NavLink to={`/${product.id}`}>
+          <NavLink to={`/${product.seller_id}`}>
             <button className="text flex w-[100%] items-center gap-x-1 rounded-e-sm border border-none bg-slate-300 p-2 text-[12px] font-bold outline-none lg:p-3">
               <IoEyeOutline color="black" size={15} className="" />
               <p>View Item</p>
@@ -63,17 +40,16 @@ const ProductCard = ({ product, onLoad }) => {
       <div className="flex flex-col items-center transition-all duration-300 ease-in-out">
         <div className="">
           <h1 className="mt-2 text-center font-semibold">
-            {product.itemNameEnglish}
+            {product.product_name}
           </h1>
           <h1 className="mt-2 text-center font-semibold">
-            {product.itemNameAmharic}
+            {product.product_desc}
           </h1>
         </div>
         <div className="my-2 flex w-full justify-evenly font-extrabold">
-          <p className="">${product.price}</p>
+          <p className="">${product.product_price}</p>
           <p className="flex items-center gap-x-2 text-[#2178ac]">
-            <FaStar />
-            {product.review}
+            {product.product_type}
           </p>
         </div>
       </div>

@@ -20,7 +20,7 @@ export const ProductContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getProjects();
+    // getProjects();
   }, []);
 
   console.log(productData);
