@@ -1,4 +1,5 @@
 import React from "react";
+// import router to navigate pages
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { ProductContextProvider } from "./contexts/ProductContext";
@@ -14,6 +15,7 @@ import SellerPage from "./pages/SellerPage";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
 
 const App = () => {
+  // setup context for state management
   return (
     <ProductContextProvider>
       <CartContextProvider>
