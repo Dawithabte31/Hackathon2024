@@ -8,13 +8,14 @@ import RegisterPage from "./pages/RegisterPage";
 import LandingPage from "./components/HomePage/LandingPage";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import BuyerHomePage from "./pages/BuyerHomePage";
+import SellerPage from "./pages/SellerPage";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<LandingPage />} />
+          <Route index element={<SellerPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
           {/* <Route path="*" element={<ErrorPage />} /> */}
