@@ -1,5 +1,5 @@
 import React, { children, createContext, useState, useEffect } from "react";
-import ProductsData from "../data/ProductData";
+import axios from "axios";
 export const ProductContext = createContext();
 
 export const ProductContextProvider = ({ children }) => {
@@ -13,16 +13,16 @@ export const ProductContextProvider = ({ children }) => {
         `http://localhost:3000/api/products/allproducts`,
       );
       setProductData(res.data);
+      // console.log(ProductData);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    // getProjects();
+    getProjects();
   }, []);
 
-  console.log(productData);
   return (
     <ProductContext.Provider value={{ productData, setCurrentCategory }}>
       {children}

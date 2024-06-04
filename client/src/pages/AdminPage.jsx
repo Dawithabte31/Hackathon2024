@@ -1,5 +1,5 @@
 import React from "react";
-import Admin_page from "../components/AdminPage/Admin_page";
+import Admin_page from "../components/AdminDashboard/RegisteredUsers";
 
 function AdminPage() {
   return (

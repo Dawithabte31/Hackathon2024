@@ -1,5 +1,7 @@
 import React from "react";
 
+//This component helps to register the buyer
+
 const BuyerRegistrationForm = () => {
   return (
     <div className="mx-auto mt-8 max-w-lg">
