@@ -1,31 +1,14 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-// import SodereLogo from "/sodere-logo.png";
 import { CgMenuLeft } from "react-icons/cg";
-import { FaRegHeart } from "react-icons/fa";
-import { IoPersonOutline, IoSearch } from "react-icons/io5";
-import { FaChevronCircleRight } from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
 import { FiShoppingBag } from "react-icons/fi";
-import { ProductContext } from "../../contexts/ProductContext";
 import { CartContext } from "../../contexts/CartContext";
-const Header = ({ setIsNavbar, setIsSearch, setIsCart }) => {
-  const { categories, setCurrentCategory } = useContext(ProductContext);
-  const { cartItemsList } = useContext(CartContext);
 
-  const headerCatagories = categories.map((category, index) => (
-    <li key={index}>
-      <Link
-        to="/categories"
-        className="flex items-center justify-between hover:font-semibold"
-        onClick={() => {
-          setCurrentCategory(category);
-        }}
-      >
-        {category}
-        <FaChevronCircleRight className="mr-4" />
-      </Link>
-    </li>
-  ));
+//this is one of the shared layout that is placed around the header :)
+
+const Header = ({ setIsNavbar, setIsSearch, setIsCart }) => {
+  const { cartItemsList } = useContext(CartContext);
 
   return (
     <>

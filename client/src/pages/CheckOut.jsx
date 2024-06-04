@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
+// this is where checkout page renders, and texes are calculted theos taxes are
+// VAT, TOT, Excise, SUR, Customs
+
 export const CheckOut = () => {
   const [accordion, setAccordion] = useState(-1);
   const arr = [1, 2, 3, 4, 5];
@@ -16,6 +19,9 @@ export const CheckOut = () => {
           className="flex cursor-pointer items-center gap-x-2"
           onClick={() => {
             setAccordion(accordion === -1 ? index : -1);
+            {
+              `This is a  dropdown list`;
+            }
           }}
         >
           {accordion === index ? (

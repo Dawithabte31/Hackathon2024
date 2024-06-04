@@ -4,6 +4,8 @@ import { CartContext } from "../../contexts/CartContext";
 import { IoCloseSharp, IoCartOutline } from "react-icons/io5";
 import { IoIosCloseCircleOutline, IoMdAdd, IoMdRemove } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
+
+// accept the props from the parent component
 const CartSection = ({ isCart, setIsCart }) => {
   const {
     cartItemsList,
@@ -16,6 +18,7 @@ const CartSection = ({ isCart, setIsCart }) => {
 
   const [shippingCost, setShippingCost] = useState(0);
 
+  //this one helps to handle the side effect
   useEffect(() => {
     const shipping = (subtotal * 8) / 100;
     setShippingCost(shipping);

@@ -6,12 +6,15 @@ import CategoryProductList from "./CategoryProductList";
 import { FaHome } from "react-icons/fa";
 
 const CategoriesSection = () => {
+  //this one helps to take the values across different components
   const { productData, categories, setCurrentCategory, currentCategory } =
     useContext(ProductContext);
   const [categoryMainList, setCategoryMainList] = useState(productData);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
   const [sortOptionValue, SetSortOptionValue] = useState("");
+
+  //this one allows to perform side effects in the component
 
   useEffect(() => {
     setCurrentPage(1);

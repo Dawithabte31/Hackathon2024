@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../contexts/ProductContext";
 import ProductCard from "../ProductCard";
 
+// this component helps to lsit the category of the product
+
 const CategoryProductList = ({
   postPerPage,
   currentPage,
@@ -13,6 +15,7 @@ const CategoryProductList = ({
   const [sortedList, setSortedList] = useState(categoryMainList);
   const [loadedProducts, setLoadedProducts] = useState(0);
 
+  //this function executes when the component renders or loads
   const handleProductLoad = () => {
     setLoadedProducts((prevCount) => prevCount + 1);
   };
@@ -20,6 +23,7 @@ const CategoryProductList = ({
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
 
+  //this allow to tackle the side effects of the component
   useEffect(() => {
     if (currentCategory != "ALL") {
       const filteredList = productData.filter((val) =>

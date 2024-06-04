@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+//simple landing page that will help the user to see what they can do
 const LandingPage = () => {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center">

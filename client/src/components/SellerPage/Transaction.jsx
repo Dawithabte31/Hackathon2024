@@ -1,5 +1,6 @@
 import React from "react";
 
+// This component showcases the transaction that are conducted by the seller
 function Transaction() {
   return (
     <div className="mx-auto">

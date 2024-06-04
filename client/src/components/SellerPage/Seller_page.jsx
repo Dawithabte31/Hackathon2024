@@ -4,7 +4,10 @@ import Transaction from "./Transaction";
 import ItemsLeft from "./ItemsLeft";
 
 function Seller_page() {
+  //This help to display the content to the right based on some condition
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
+
+  //this helps to render the contents of those three based on the condition
   const renderContent = () => {
     switch (selectedMenuItem) {
       case "addItems":
@@ -20,6 +23,7 @@ function Seller_page() {
 
   return (
     <div>
+      {/* this one will display the left side of the component which act like a sidebar  */}
       <div className="flex h-screen -translate-x-4 justify-center border-t-2 border-gray-600">
         <div className="h-[90vh] w-[300px] bg-[#2c3e50] p-5 text-[#ecf0f1]">
           <div className="flex">
@@ -48,6 +52,7 @@ function Seller_page() {
             </li>
           </ul>
         </div>
+        {/* and this one will be rendered in the right side of the sidebar  */}
         <div className="mt-8 h-[80vh] w-5/6">{renderContent()}</div>
       </div>
     </div>
