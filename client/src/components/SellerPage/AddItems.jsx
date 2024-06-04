@@ -72,6 +72,25 @@ function AddItems() {
             Product Descriptions
           </label>
         </div>
+        <div className="order-0 mb-5 flex items-center justify-between gap-x-4 border-b-2 border-gray-300 text-black">
+          <label htmlFor="countries" className="block text-xl text-gray-500">
+            Product Type
+          </label>
+
+          <select
+            name="auth"
+            id="auth"
+            className="bg w-[200px] rounded-sm p-1 outline-none"
+            onChange={(e) => {
+              setUserType(e.target.value);
+            }}
+          >
+            <option value="login">Select Product Type</option>
+            <option value="login">Car</option>
+            <option value="seller">House Hold </option>
+            <option value="buyer">Food </option>
+          </select>
+        </div>
         <button
           type="submit"
           class="w-[200px] rounded-lg bg-blue-700 px-20 py-2.5 text-center text-xl font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
