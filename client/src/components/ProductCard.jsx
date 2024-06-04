@@ -35,7 +35,12 @@ const ProductCard = ({ product, onLoad }) => {
   return (
     <div className="group mx-auto grid w-[90%] cursor-pointer overflow-hidden border border-slate-200">
       <div className="bg-re-300 relative flex h-[60vw] max-h-[400px] items-center shadow-sm after:absolute after:top-0 after:h-[0%] after:w-[100%] after:bg-gray-950 after:opacity-75 after:transition-all after:duration-500 after:ease-in-out group-hover:after:h-[100%] md:h-[40vw]">
-        <img src={product.imgSrc} alt="" className="[w-100%]" loading="lazy" />
+        <img
+          src="images/default-product-image.png"
+          alt=""
+          className="[w-100%]"
+          loading="lazy"
+        />
         <div className="absolute top-1 z-10 ml-[-100px] flex w-[0%] flex-col gap-y-2 transition-all duration-500 ease-in-out group-hover:ml-[0px] group-hover:w-[70%]">
           <button
             className="text flex items-center gap-x-1 rounded-e-sm border border-none bg-[#5a9bc1] p-2 text-[12px] text-white outline-none lg:p-3"

@@ -11,19 +11,15 @@ const LandingPage = () => {
           National Tax Management
         </h1>
         <p className="mx-auto mt-8 max-w-[700px] text-center">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, ipsum.
-          Reprehenderit explicabo voluptates dolor temporibus voluptas hic
-          deserunt labore ipsam. Neque minima temporibus sapiente sint magni
-          recusandae impedit, non esse. Tempore qui nemo repellendus amet atque
-          saepe, modi provident, eveniet sit, non aliquid libero. Fugit, unde
-          repellendus reprehender
+          The a platform where seller and buyer get together in easy and
+          convenient way , calculate different types of taxes in one stop{" "}
         </p>
       </div>
       <div className="mt-10 flex gap-x-8">
         <Link to="login">
           <button
             type="submit"
-            className="w-full rounded-lg bg-blue-700 px-16 py-4 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
+            className="w-full rounded-lg bg-blue-600 px-16 py-4 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
           >
             Login
           </button>
@@ -32,7 +28,7 @@ const LandingPage = () => {
         <Link to="register">
           <button
             type="submit"
-            className="w-full rounded-lg bg-blue-700 px-16 py-4 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
+            className="w-full rounded-lg bg-blue-600 px-16 py-4 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
           >
             Register
           </button>
