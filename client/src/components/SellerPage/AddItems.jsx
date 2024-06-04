@@ -1,9 +1,9 @@
 import axios from "axios";
 import React from "react";
 import { Contextseller } from "./../../sellercontext/Contextseller";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 function AddItems() {
-  const { dispatch,seller } = useContext(Contextseller);
+  const { dispatch, seller } = useContext(Contextseller);
   const [producttax, setProducttax] = useState([]);
   const [product_name, setProduct_name] = useState([]);
   const [product_type, setProduct_type] = useState([]);
@@ -31,7 +31,7 @@ function AddItems() {
   useEffect(() => {
     getProducts();
   }, []);
-  console.log(seller.username)
+  // console.log(seller.username)
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -119,7 +119,7 @@ function AddItems() {
             type="number"
             name="product_price"
             id="product_price"
-            className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-xl text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
+            className="peer block w-full appearance-none border-0 border-b-2 border-g ray-300 bg-transparent px-0 py-2.5 text-xl text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
             placeholder=" "
             required
           />

@@ -11,15 +11,16 @@ const CartSection = ({ isCart, setIsCart }) => {
     increaseItemAmount,
     decreaseItemAmount,
     subtotal,
+    netBalance,
     emptyCart,
   } = useContext(CartContext);
 
-  const [shippingCost, setShippingCost] = useState(0);
+  const [taxCost, setTaxCost] = useState(0);
 
   useEffect(() => {
-    const shipping = (subtotal * 8) / 100;
-    setShippingCost(shipping);
-  }, [subtotal]);
+    const shipping = (5 * 8) / 100;
+    setTaxCost(shipping);
+  }, []);
 
   const cartRef = useRef(null);
 
@@ -28,36 +29,36 @@ const CartSection = ({ isCart, setIsCart }) => {
     cartItemsList.map((item, index) => (
       <div className="grid grid-cols-3" key={index}>
         <div className="h-[80px] w-[78px] bg-white">
-          <img src={item.imgSrc} className="h-[100%] w-[100%]" />
+          <img className="h-[100%] w-[100%]" />
         </div>
         <div className="col-span-2">
           <div className="flex items-center justify-between">
-            <h1 className="text-sm font-bold">{item.itemNameEnglish}</h1>
+            <h1 className="text-sm font-bold">{item.product_name}</h1>
             <IoIosCloseCircleOutline
               className="shrink-0 cursor-pointer hover:scale-110"
               size={25}
               onClick={() => {
-                removeCartItem(item.id);
+                removeCartItem(item._id);
               }}
             />
           </div>
-          <p className="translate-y-[-4px] text-gray-500">{item.category[0]}</p>
+          <p className="translate-y-[-4px] text-gray-500"></p>
           <div className="mt-3 flex justify-between">
-            <p className="font-semibold">{item.price} birr </p>
+            <p className="font-semibold">{item.product_price} birr </p>
             <div className="flex items-center gap-x-2 border border-gray-400">
               <button
                 className="p-2"
                 onClick={() => {
-                  decreaseItemAmount(item.id);
+                  decreaseItemAmount(item._id);
                 }}
               >
                 <IoMdRemove className="cursor-pointer hover:scale-125" />
               </button>
-              <h1 className="">{item.cartAmount}</h1>
+              <h1 className="">{item.cartamount}</h1>
               <button
                 className="p-[9px]"
                 onClick={() => {
-                  increaseItemAmount(item.id);
+                  increaseItemAmount(item._id);
                 }}
               >
                 <IoMdAdd className="cursor-pointer hover:scale-125" />
@@ -126,12 +127,12 @@ const CartSection = ({ isCart, setIsCart }) => {
         className={`absolute bottom-0 w-[100%] space-y-2 overscroll-contain border-t border-t-gray-400 bg-[#f5f5f5] px-6 py-4 ${mappedCartList.length < 1 ? "hidden" : ""}`}
       >
         <div className={`flex justify-between text-[1.2rem] font-semibold`}>
-          <h1 className="text-sm">Shipping </h1>
-          <h1 className=""> {shippingCost.toFixed(2)}</h1>
+          <h1 className="text-sm">Net Cost </h1>
+          <h1 className="">{netBalance}</h1>
         </div>
         <div className={`flex justify-between text-[1.2rem] font-semibold`}>
-          <h1 className="text-sm">Subtotal </h1>
-          <h1 className=""> {subtotal.toFixed(2)}</h1>
+          <h1 className="text-sm">Tax Included </h1>
+          <h1 className="">{subtotal}</h1>
         </div>
         <Link
           to="/checkout"

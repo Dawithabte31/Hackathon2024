@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { CartContext } from "../contexts/CartContext";
 
 export const CheckOut = () => {
   const [accordion, setAccordion] = useState(-1);
+  const { subtotal, netBalance, cartItemsList } = useContext(CartContext);
   const arr = [1, 2, 3, 4, 5];
-  const mappedAccordion = arr.map((item, index) => (
+  const mappedAccordion = cartItemsList.map((item, index) => (
     <div className="px-6" key={index}>
       <div className="flex justify-between py-3">
-        <h1 className="font-bold">Firewall </h1>
+        <h1 className="font-bold">{item.product_name} </h1>
         <div className="flex gap-x-3">
           <h2 className="">Total Price</h2>
-          <h2 className="">28,038,725</h2>
+          <h2 className="">{item.product_price}</h2>
         </div>
         <div
           className="flex cursor-pointer items-center gap-x-2"
@@ -31,28 +33,55 @@ export const CheckOut = () => {
           <div className="flex w-full justify-between gap-x-16 py-2">
             <p className="font-semibold">Single Price * Amount</p>
             <p className="">
-              3,100,000 * 5 = <span className="font-semibold"> 15,500,00 </span>
+              {item.product_price} * {item.cartamount} =
+              <span className="font-semibold"> {netBalance}</span>
             </p>
           </div>
           <div className="flex w-full justify-between gap-x-16 py-2">
             <p className="font-semibold">Custom Tax </p>
             <p className="">
-              (15,500,000 )*15% ={" "}
-              <span className="font-semibold"> 4,650,000 </span>
+              {netBalance}*{item.customs_tax} =
+              <span className="font-semibold">
+                {(netBalance * item.customs_tax) / 100}
+              </span>
             </p>
           </div>
           <div className="flex w-full justify-between gap-x-16 py-2">
             <p className="font-semibold">Excise Tax </p>
             <p className="">
-              (15,500,000 + 4,650,000)*10%={" "}
-              <span className="font-semibold"> 2,015,000 </span>
+              ({netBalance} +
+              {(item.product_price * item.cartamount * item.customs_tax) / 100}
+              )*{item.exicise}=
+              <span className="font-semibold">
+                {((item.product_price * item.cartamount +
+                  (item.product_price * item.cartamount * item.customs_tax) /
+                    100) *
+                  item.exicise) /
+                  100}
+              </span>
             </p>
           </div>
           <div className="flex w-full justify-between gap-x-16 py-2">
             <p className="font-semibold">VAT </p>
             <p className="">
-              (15,500,000 + 4,650,000+2,015,000)*10%={" "}
-              <span className="font-semibold"> 3,324,750 </span>
+              ({netBalance} +{(netBalance * item.customs_tax) / 100}
+              {(item.product_price * item.cartamount +
+                (item.product_price * item.cartamount * item.customs_tax) /
+                  100) *
+                item.exicise}
+              )*10%=
+              <span className="font-semibold">
+                {" "}
+                {((item.product_price * item.cartamount +
+                  (netBalance * item.customs_tax) / 100 +
+                  ((item.product_price * item.cartamount +
+                    (item.product_price * item.cartamount * item.customs_tax) /
+                      100) *
+                    item.exicise) /
+                    100) *
+                  item.vat) /
+                  100}{" "}
+              </span>
             </p>
           </div>
         </div>

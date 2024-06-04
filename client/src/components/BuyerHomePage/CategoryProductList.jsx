@@ -2,13 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../contexts/ProductContext";
 import ProductCard from "../ProductCard";
 
-const CategoryProductList = ({
-  postPerPage,
-  currentPage,
-  categoryMainList,
-  setCategoryMainList,
-  sortOptionValue,
-}) => {
+const CategoryProductList = () => {
   const { productData } = useContext(ProductContext);
   const mappedCategoryList =
     productData &&
