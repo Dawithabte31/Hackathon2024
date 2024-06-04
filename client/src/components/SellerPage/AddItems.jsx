@@ -1,7 +1,9 @@
 import axios from "axios";
 import React from "react";
+import { Contextseller } from "./../../sellercontext/Contextseller";
 import { useState, useEffect } from "react";
 function AddItems() {
+  const { dispatch,seller } = useContext(Contextseller);
   const [producttax, setProducttax] = useState([]);
   const [product_name, setProduct_name] = useState([]);
   const [product_type, setProduct_type] = useState([]);
@@ -29,6 +31,7 @@ function AddItems() {
   useEffect(() => {
     getProducts();
   }, []);
+  console.log(seller.username)
 
   const handleAdd = async (e) => {
     e.preventDefault();
