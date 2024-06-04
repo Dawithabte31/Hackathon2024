@@ -6,8 +6,7 @@ import CategoryProductList from "./CategoryProductList";
 import { FaHome } from "react-icons/fa";
 
 const CategoriesSection = () => {
-  const { productData, categories, setCurrentCategory, currentCategory } =
-    useContext(ProductContext);
+  const { productData } = useContext(ProductContext);
   const [categoryMainList, setCategoryMainList] = useState(productData);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
@@ -24,13 +23,7 @@ const CategoriesSection = () => {
           Product List
         </h1>
       </div>
-      <CategoryProductList
-        postPerPage={postPerPage}
-        currentPage={currentPage}
-        categoryMainList={categoryMainList}
-        setCategoryMainList={setCategoryMainList}
-        sortOptionValue={sortOptionValue}
-      />
+      <CategoryProductList categoryMainList={categoryMainList} />
     </div>
   );
 };

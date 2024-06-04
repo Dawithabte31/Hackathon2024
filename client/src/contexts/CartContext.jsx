@@ -3,23 +3,25 @@ import toast, { Toaster } from "react-hot-toast";
 import ItemsLeft from "../components/SellerPage/ItemsLeft";
 
 export const CartContext = createContext();
-
+// create a context for state managing
 export const CartContextProvider = ({ children }) => {
   const [cartItemsList, setCartItemsList] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
-  const [netBalance, setNetBalance] = useState(0);
-  const [totalTax, setTotalTax] = useState({});
+
   const addToCart = (product) => {
+    //check if the item already exist in the cart
     const ExistingItemIndex = cartItemsList.findIndex(
       (item) => item._id === product._id,
     );
     setCartItemsList((prev) => {
       if (ExistingItemIndex !== -1) {
+        //if it exist on cart return the previous cart list
         const updatedCartList = [...prev];
         toast.error("Item already in cart!");
 
         return updatedCartList;
       } else {
+        //if it does not exist  on cart make it cart amount 1
         toast.success("Item added to cart");
         return [...prev, { ...product, cartamount: 1 }];
       }
@@ -27,12 +29,12 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const removeCartItem = (id) => {
-    const updatedCartList = cartItemsList.filter((item) => item._id !== id);
+    const updatedCartList = cartItemsList.filter((item) => item.id !== id);
     setCartItemsList(updatedCartList);
   };
 
   const increaseItemAmount = (id) => {
-    const cartItemIndex = cartItemsList.findIndex((item) => item._id === id);
+    const cartItemIndex = cartItemsList.findIndex((item) => item.id === id);
     setCartItemsList((prev) => {
       const updatedCartList = [...prev];
       updatedCartList[cartItemIndex] = {
@@ -44,9 +46,11 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const emptyCart = () => {
+    // clear the cart
     setCartItemsList([]);
   };
 
+  // incense the cart amount by desired number
   const addItemWithAmount = (product, amount) => {
     const ExistingItemIndex = cartItemsList.findIndex(
       (item) => item._id === product.id,
@@ -68,6 +72,8 @@ export const CartContextProvider = ({ children }) => {
     });
   };
 
+  // decrease the amount by 1
+
   const decreaseItemAmount = (id) => {
     const cartItemIndex = cartItemsList.findIndex((item) => item._id === id);
     setCartItemsList((prev) => {
@@ -83,7 +89,7 @@ export const CartContextProvider = ({ children }) => {
       return updatedCartList;
     });
   };
-
+  // calculate the total balance
   useEffect(() => {
     let totalBalance = 0;
     cartItemsList.forEach((item) => {
@@ -92,43 +98,10 @@ export const CartContextProvider = ({ children }) => {
     setSubtotal(totalBalance);
   }, [cartItemsList, subtotal]);
 
-  useEffect(() => {
-    let totalBalance = 0;
-    let customTax = 0;
-    let exiciseTax = 0;
-    let vat = 0;
-    let sur = 0;
-    let totalTaxBalance = 0;
-    let totalTax = 0;
-
-    cartItemsList.forEach((item) => {
-      totalBalance += item.product_price * item.cartamount;
-      customTax =
-        (item.product_price * item.cartamount * item.customs_tax) / 100;
-
-      exiciseTax =
-        ((item.product_price * item.cartamount + customTax) * item.exicise) /
-        100;
-      vat =
-        ((item.product_price * item.cartamount + customTax + exiciseTax) *
-          item.vat) /
-        100;
-
-      sur =
-        ((item.product_price * item.cartamount + customTax + exiciseTax + vat) *
-          item.sur) /
-        100;
-      totalTax = customTax + exiciseTax + vat + sur;
-      totalTaxBalance += totalBalance + totalTax;
-    });
-    setNetBalance(totalBalance);
-    setSubtotal(totalTaxBalance);
-  }, [cartItemsList, subtotal]);
-
-  useEffect(() => {
-    console.log("subtotal");
-    // console.log(subtotal);
-  }, [cartItemsList]);
+  // useEffect(() => {
+  //   console.log("subtotal");
+  //   console.log(subtotal);
+  // }, [cartItemsList]);
 
   return (
     <CartContext.Provider
