@@ -1,5 +1,6 @@
 import React, { children, createContext, useState } from "react";
 import ProductsData from "../data/ProductData";
+import axios from "axios";
 export const ProductContext = createContext();
 
 export const ProductContextProvider = ({ children }) => {
@@ -22,7 +23,6 @@ export const ProductContextProvider = ({ children }) => {
     getProjects();
   }, []);
   
- console.log(productData);
   return (
     <ProductContext.Provider
       value={{ productData, categories, currentCategory, setCurrentCategory }}
