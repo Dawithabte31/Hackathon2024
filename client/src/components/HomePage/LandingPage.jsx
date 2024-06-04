@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const LandingPage = () => {
+  // Landing Page
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center">
       <div className="">
         <h1 className="text-center text-5xl font-bold uppercase text-yellow-400">
-          Ethiopian Revenue Minster
+          Ethiopian Minster Of Revenue
         </h1>
         <h1 className="text-center text-4xl font-bold uppercase">
           National Tax Management
         </h1>
         <p className="mx-auto mt-8 max-w-[700px] text-center">
-          The a platform where seller and buyer get together in easy and
+          The platform where seller and buyer get together in easy and
           convenient way , calculate different types of taxes in one stop{" "}
         </p>
       </div>

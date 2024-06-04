@@ -1,6 +1,7 @@
 import React from "react";
 
 function AddItems() {
+  // seller add items to the system using the below form
   return (
     <div>
       <h2 className="mb-4 text-center text-2xl">
@@ -84,6 +85,7 @@ function AddItems() {
             onChange={(e) => {
               setUserType(e.target.value);
             }}
+            // select the product type to determine the tax
           >
             <option value="login">Select Product Type</option>
             <option value="login">Car</option>

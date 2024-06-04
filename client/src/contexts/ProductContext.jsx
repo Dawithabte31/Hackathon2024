@@ -3,11 +3,10 @@ import ProductsData from "../data/ProductData";
 export const ProductContext = createContext();
 
 export const ProductContextProvider = ({ children }) => {
+  // context to handle the product from the database
   const [productData, setProductData] = useState("");
-  // const categories = [...new Set(productData.map((val) => val.product_type))];
   const [currentCategory, setCurrentCategory] = useState("ALL");
 
-  const categories = "ALL";
   const getProjects = async () => {
     try {
       const res = await axios.get(
@@ -25,9 +24,7 @@ export const ProductContextProvider = ({ children }) => {
 
   console.log(productData);
   return (
-    <ProductContext.Provider
-      value={{ productData, categories, currentCategory, setCurrentCategory }}
-    >
+    <ProductContext.Provider value={{ productData, setCurrentCategory }}>
       {children}
     </ProductContext.Provider>
   );

@@ -13,6 +13,7 @@ import BuyerHomePage from "./pages/BuyerHomePage";
 import { CheckOut } from "./pages/CheckOut";
 import SellerPage from "./pages/SellerPage";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
+import ErrorPage from "./pages/ErrorPage";
 
 const App = () => {
   // setup context for state management
@@ -26,7 +27,7 @@ const App = () => {
               <Route path="buyer" element={<BuyerHomePage />} />
               <Route path="seller" element={<SellerPage />} />
               <Route path="checkout" element={<CheckOut />} />
-              {/* <Route path="*" element={<ErrorPage />} /> */}
+              <Route path="*" element={<ErrorPage />} />
             </Route>
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
