@@ -21,7 +21,7 @@ export const ProductContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getProjects();
+    // getProjects();
   }, []);
   
   return (

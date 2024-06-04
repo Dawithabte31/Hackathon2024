@@ -9,80 +9,10 @@ const CategoryProductList = ({
   setCategoryMainList,
   sortOptionValue,
 }) => {
-  const { productData, currentCategory } = useContext(ProductContext);
-  const [sortedList, setSortedList] = useState(categoryMainList);
-  const [loadedProducts, setLoadedProducts] = useState(0);
-
-  const handleProductLoad = () => {
-    setLoadedProducts((prevCount) => prevCount + 1);
-  };
-
-  const lastPostIndex = currentPage * postPerPage;
-  const firstPostIndex = lastPostIndex - postPerPage;
-
-  useEffect(() => {
-    if (currentCategory != "ALL") {
-      const filteredList = productData.filter((val) =>
-        val.category.includes(currentCategory),
-      );
-
-      setCategoryMainList(filteredList);
-    } else {
-      setCategoryMainList(productData);
-    }
-  }, [currentCategory, productData]);
-
-  useEffect(() => {
-    setSortedList(categoryMainList);
-  }, [categoryMainList]);
-
-  useEffect(() => {
-    switch (sortOptionValue) {
-      case "default":
-        {
-          setSortedList(categoryMainList);
-        }
-        break;
-      case "AZ":
-        {
-          const sortedCategory = [...categoryMainList].sort((a, b) =>
-            a.itemNameEnglish.localeCompare(b.itemNameEnglish),
-          );
-          setSortedList(sortedCategory);
-        }
-        break;
-      case "ZA":
-        {
-          const sortedCategory = [...categoryMainList].sort((a, b) =>
-            b.itemNameEnglish.localeCompare(a.itemNameEnglish),
-          );
-          setSortedList(sortedCategory);
-        }
-        break;
-      case "toHigh":
-        {
-          const sortedCategory = [...categoryMainList].sort(
-            (a, b) => a.price - b.price,
-          );
-          setSortedList(sortedCategory);
-        }
-        break;
-      case "toLow":
-        {
-          const sortedCategory = [...categoryMainList].sort(
-            (a, b) => b.price - a.price,
-          );
-          setSortedList(sortedCategory);
-        }
-        break;
-      default:
-        setSortedList(categoryMainList);
-    }
-  }, [sortOptionValue, currentCategory]);
-
-  const mappedCategoryList = sortedList
-    .slice(firstPostIndex, lastPostIndex)
-    .map((product, index) => (
+  const { productData } = useContext(ProductContext);
+  const mappedCategoryList =
+    productData &&
+    productData.map((product, index) => (
       <ProductCard product={product} key={index} onLoad={handleProductLoad} />
     ));
 
