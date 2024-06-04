@@ -1,16 +1,17 @@
-import React, { children, createContext, useState } from "react";
+import React, { children, createContext, useState, useEffect } from "react";
 import ProductsData from "../data/ProductData";
 export const ProductContext = createContext();
 
 export const ProductContextProvider = ({ children }) => {
   const [productData, setProductData] = useState("");
-  const categories = [...new Set(productData.map((val) => val.category[0]))];
+  // const categories = [...new Set(productData.map((val) => val.product_type))];
   const [currentCategory, setCurrentCategory] = useState("ALL");
 
+  const categories = "ALL";
   const getProjects = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/api/products/allproducts`
+        `http://localhost:3000/api/products/allproducts`,
       );
       setProductData(res.data);
     } catch (error) {
@@ -21,8 +22,8 @@ export const ProductContextProvider = ({ children }) => {
   useEffect(() => {
     getProjects();
   }, []);
-  
- console.log(productData);
+
+  console.log(productData);
   return (
     <ProductContext.Provider
       value={{ productData, categories, currentCategory, setCurrentCategory }}

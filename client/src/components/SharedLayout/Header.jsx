@@ -12,20 +12,20 @@ const Header = ({ setIsNavbar, setIsSearch, setIsCart }) => {
   const { categories, setCurrentCategory } = useContext(ProductContext);
   const { cartItemsList } = useContext(CartContext);
 
-  const headerCatagories = categories.map((category, index) => (
-    <li key={index}>
-      <Link
-        to="/categories"
-        className="flex items-center justify-between hover:font-semibold"
-        onClick={() => {
-          setCurrentCategory(category);
-        }}
-      >
-        {category}
-        <FaChevronCircleRight className="mr-4" />
-      </Link>
-    </li>
-  ));
+  // const headerCatagories = categories.map((category, index) => (
+  //   <li key={index}>
+  //     <Link
+  //       to="/categories"
+  //       className="flex items-center justify-between hover:font-semibold"
+  //       onClick={() => {
+  //         setCurrentCategory(category);
+  //       }}
+  //     >
+  //       {category}
+  //       <FaChevronCircleRight className="mr-4" />
+  //     </Link>
+  //   </li>
+  // ));
 
   return (
     <>
