@@ -1,6 +1,7 @@
 import React from "react";
 
 function ItemsLeft() {
+  // a table to show item list left
   return (
     <div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

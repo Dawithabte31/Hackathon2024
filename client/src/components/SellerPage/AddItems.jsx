@@ -3,6 +3,9 @@ import React from "react";
 import { Contextseller } from "./../../sellercontext/Contextseller";
 import { useState, useEffect } from "react";
 function AddItems() {
+ 
+  // seller add items to the system using the below form
+ 
   const { dispatch,seller } = useContext(Contextseller);
   const [producttax, setProducttax] = useState([]);
   const [product_name, setProduct_name] = useState([]);
@@ -73,6 +76,7 @@ function AddItems() {
     }
   };
 
+ 
   return (
     <div>
       <h2 className="mb-4 text-center text-2xl">
@@ -160,6 +164,7 @@ function AddItems() {
             onChange={(e) => {
               setProduct_type(e.target.value);
             }}
+            // select the product type to determine the tax
           >
             <option value="login">Select Product Type</option>
             <option value="car">Car</option>

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// database model schema to set constraints to product
+
 const ProductSchema = new Schema(
   {
       product_name: {
