@@ -1,7 +1,16 @@
 import axios from "axios";
 import React from "react";
+import { useState, useEffect } from "react";
 function AddItems() {
   const [producttax, setProducttax] = useState([]);
+  // const [product_type, setProduct_type] = useState([]);
+  // const [amount, setAmount] = useState([]);
+  // const [product_price, setProduct_price] = useState([]);
+  // const [product_desc, setProduct_desc] = useState([]);
+  // const [turnover_tax, setTurnover_tax] = useState([]);
+  // const [sur, setSur] = useState([]);
+  const [customs_tax,setCustoms_tax]=useState([]);
+  
 
   const getProducts = async () => {
     try {
@@ -18,31 +27,40 @@ function AddItems() {
     getProducts();
   }, []);
 
-  // try {
-  //   await axios.post(`http://localhost:3000/api/products/create`, {
-  //     product_name: user.user.username,
-  //     product_type:product_type,
-  //     amount: amount,
-  //     product_price: product_price,
-  //     product_desc: product_desc,
-  //     turnover_tax: turnover_tax,
-  //     sur: departement,
-  //     customs_tax: skill,
-  //     exicise: why,
-  //     vat:vat,
-  //     seller_id: seller.username
+  const handleAdd = async () => {
+    // producttax.find((item)=> item.product_type===product.product_type).map((item)(
+    //   {...product,tax1:item.tax1,tax2:item.tax2}
+    // ))
 
-  //   });
+    const foundedItem = producttax.find(
+      (item) => item.product_type === product.product_type,
+    );
+    console.log(foundedItem);
+    try {
+      await axios.post(`http://localhost:3000/api/products/create`, {
+        product_name: user.user.username,
+        product_type: product_type,
+        amount: amount,
+        product_price: product_price,
+        product_desc: product_desc,
+        turnover_tax: turnover_tax,
+        sur: departement,
+        customs_tax: skill,
+        exicise: why,
+        vat: vat,
+        seller_id: seller.username,
+      });
 
-  //   if (user.user.role === 0) {
-  //     window.location.href = "/user";
-  //   } else {
-  //     window.location.href = "/admin";
-  //   }
-  //   console.log("done!");
-  // } catch (error) {
-  //   console.log(error);
-  // }
+      if (user.user.role === 0) {
+        window.location.href = "/user";
+      } else {
+        window.location.href = "/admin";
+      }
+      console.log("done!");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -60,7 +78,7 @@ function AddItems() {
             required
           />
           <label
-            for="product_name"
+            htmlFor="product_name"
             className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-xl text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 rtl:peer-focus:translate-x-1/4"
           >
             Product Name
@@ -76,7 +94,7 @@ function AddItems() {
             required
           />
           <label
-            for="product_amount"
+            htmlFor="product_amount"
             className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-xl text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 rtl:peer-focus:translate-x-1/4"
           >
             product amount
@@ -92,7 +110,7 @@ function AddItems() {
             required
           />
           <label
-            for="product_amount"
+            htmlFor="product_amount"
             className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-xl text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 rtl:peer-focus:translate-x-1/4"
           >
             product price
@@ -109,7 +127,7 @@ function AddItems() {
             required
           />
           <label
-            for="floating_company"
+            htmlFor="floating_company"
             className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-xl text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:start-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 rtl:peer-focus:translate-x-1/4"
           >
             Product Descriptions

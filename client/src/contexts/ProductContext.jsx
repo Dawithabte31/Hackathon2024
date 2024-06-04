@@ -15,13 +15,14 @@ export const ProductContextProvider = ({ children }) => {
         `http://localhost:3000/api/products/allproducts`,
       );
       setProductData(res.data);
+      console.log(ProductData);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    // getProjects();
+    getProjects();
   }, []);
   
   return (

@@ -13,7 +13,7 @@ const CategoryProductList = ({
   const mappedCategoryList =
     productData &&
     productData.map((product, index) => (
-      <ProductCard product={product} key={index} onLoad={handleProductLoad} />
+      <ProductCard product={product} key={index} />
     ));
 
   return (
