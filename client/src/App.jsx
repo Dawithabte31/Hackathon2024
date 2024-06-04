@@ -15,9 +15,10 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<SellerPage />} />
+          <Route index element={<LandingPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
+          <Route path="seller" element={<SellerPage />} />
           {/* <Route path="*" element={<ErrorPage />} /> */}
         </Route>
       </Routes>
