@@ -1,34 +1,48 @@
+import axios from "axios";
 import React from "react";
-
 function AddItems() {
+  const [producttax, setProducttax] = useState([]);
 
-  const handleAdd = async () => {
+  const getProducts = async () => {
     try {
-      await axios.post(`http://localhost:3000/api/products/create`, {
-        product_name: user.user.username,
-        amount: amount,
-        product_price: product_price,
-        product_desc: product_desc,
-        turnover_tax: turnover_tax,
-        sur: departement,
-        customs_tax: skill,
-        exicise: why,
-        vat:vat,
-        seller_id: seller.username
-
-      });
-
-      if (user.user.role === 0) {
-        window.location.href = "/user";
-      } else {
-        window.location.href = "/admin";
-      }
-      console.log("done!");
+      const res = await axios.get(
+        `http://localhost:3000/api/producttax/allproductstax`,
+      );
+      setProducttax(res.data);
     } catch (error) {
       console.log(error);
     }
   };
 
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  // try {
+  //   await axios.post(`http://localhost:3000/api/products/create`, {
+  //     product_name: user.user.username,
+  //     product_type:product_type,
+  //     amount: amount,
+  //     product_price: product_price,
+  //     product_desc: product_desc,
+  //     turnover_tax: turnover_tax,
+  //     sur: departement,
+  //     customs_tax: skill,
+  //     exicise: why,
+  //     vat:vat,
+  //     seller_id: seller.username
+
+  //   });
+
+  //   if (user.user.role === 0) {
+  //     window.location.href = "/user";
+  //   } else {
+  //     window.location.href = "/admin";
+  //   }
+  //   console.log("done!");
+  // } catch (error) {
+  //   console.log(error);
+  // }
 
   return (
     <div>
