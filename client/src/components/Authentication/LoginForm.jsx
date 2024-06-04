@@ -17,7 +17,6 @@ const LoginForm = () => {
     dispatch({ type: "LOGIN_START" });
     try {
       if (userType === "seller") {
-        console.log("erooo");
         const res = await axios.post(`http://localhost:3000/api/loginseller`, {
           email,
           password,
