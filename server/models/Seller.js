@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const jwt = require("jsonwebtoken");
 
-const SellerRequestSchema = new Schema(
+const SellerSchema = new Schema(
   {   
       fullname:{
         type: String,
@@ -51,16 +51,16 @@ const SellerRequestSchema = new Schema(
       user_role:{
        type:String,
        required:true,
-       default:"admin",
+       default:"seller"
       },    
   },
   { timestamps: true }
 );
-SellerRequestSchema.methods.getJwtToken = function () {
+SellerSchema.methods.getJwtToken = function () {
   return jwt.sign({ id: this._id}, process.env.JWT_SECRET, {
     expiresIn: 3600,
   });
 };
 
-const SellerRequests = mongoose.model('SellerRequests',SellerRequestSchema);
-module.exports = SellerRequests;
+const Seller = mongoose.model('Seller',SellerSchema);
+module.exports = Seller;

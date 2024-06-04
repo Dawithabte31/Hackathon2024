@@ -1,24 +1,62 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+// import { sellercontext } from "../context/sellercontext";
+
+
+
+
+
+
+
+
+
+
+
+
 const LoginForm = () => {
   const [userType, setUserType] = useState("admin");
   console.log(userType);
   const navigate = useNavigate();
+  const sellerApi="http://localhost:3000/api/loginseller";
+  const userApi="http://localhost:3000/api/login";
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post(`${userType==="seller"? sellerApi : userApi}`, {
+        email,
+        password,
+      });
+      // dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      res.data && window.location.replace(`/${userType}`);
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      setError(true);
+      dispatch({ type: "LOGIN_FAILURE" });
+    }
+  };
+
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center">
+    <div className="flex h-screen w-screen flex-col items-center justify-center">
+      <h1 className="mb-16 text-3xl font-bold text-blue-500">Login</h1>
       <form
         className="mx-auto max-w-sm"
-        onSubmit={() => {
-          navigate(`/${userType}`);
-        }}
+        // onSubmit={() => {
+        //   navigate(`/${userType}`);
+        // }}
+        onSubmit={handleSubmit}
+      
       >
         <div className="mb-5">
           <label
             htmlFor="email"
             className="mb-2 block text-sm font-medium text-gray-900"
           >
-            Username
+            Email
           </label>
           <input
             type="email"
