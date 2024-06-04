@@ -13,7 +13,7 @@ export const CartContextProvider = ({ children }) => {
 
   const addToCart = (product) => {
     const ExistingItemIndex = cartItemsList.findIndex(
-      (item) => item.id === product.id,
+      (item) => item.id === product._id,
     );
     setCartItemsList((prev) => {
       if (ExistingItemIndex !== -1) {
